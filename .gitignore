@@ -1,0 +1,32 @@
+# =======================================================
+# apis n stuff
+# =======================================================
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.flaskenv
+
+# =======================================================
+# logs n stuff
+# =======================================================
+*.log
+mcp-server.log
+debug.log
+
+# =======================================================
+# ide settings n stuff
+# =======================================================
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# os system files n stuff
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
