@@ -1,23 +1,22 @@
-from pydantic import Field
+"""Podman MCP Server"""
 
 from mcp.server.fastmcp import FastMCP
-
-mcp = FastMCP("Great User Example")
-
-
-@mcp.tool()
-def greet_user(
-    name: str = Field(description="The name of the person to greet"),
-    title: str = Field(description="Optional title like Mr/Ms/Dr", default=""),
-    times: int = Field(description="Number of times to repeat the greeting", default=1),
-) -> str:
-    """Greet a user with optional title and repetition"""
-    greeting = f"Hello {title + ' ' if title else ''}{name}!"
-    return "\n".join([greeting] * times)
+from podman_mcp_server.utils.mcp import mcpWrapper
+from podman_mcp_server.api import system_api, containers_api, images_api
 
 
 def main():
     """Run the MCP server."""
+    mcp = FastMCP("Podman MCP Server")
+
+    # Dummy calls to avoid "unused" errors.
+    # The mcpWrapper will handle adding the tools to the MCP instance.
+    system_api.SystemAPI()
+    containers_api.ContainersAPI()
+    images_api.ImagesAPI()
+
+    # Initialize the mcpWrapper with the MCP instance
+    mcpWrapper(mcp)
     mcp.run()
 
 
