@@ -30,3 +30,10 @@ debug.log
 Thumbs.db
 ehthumbs.db
 desktop.ini
+# go build output
+podman-mcp
+*.exe
+
+# go build output
+podman-mcp
+*.exe
