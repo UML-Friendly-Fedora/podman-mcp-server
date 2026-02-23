@@ -2,7 +2,7 @@
 
 from mcp.server.fastmcp import FastMCP
 from podman_mcp_server.utils.mcp import mcpWrapper
-from podman_mcp_server.api import system_api, containers_api, images_api
+from podman_mcp_server.api import system_api, containers_api, images_api, volumes_api
 
 
 def main():
@@ -14,6 +14,7 @@ def main():
     system_api.SystemAPI()
     containers_api.ContainersAPI()
     images_api.ImagesAPI()
+    volumes_api.VolumesAPI()
 
     # Initialize the mcpWrapper with the MCP instance
     mcpWrapper(mcp)
