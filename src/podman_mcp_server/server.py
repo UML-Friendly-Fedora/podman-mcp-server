@@ -4,6 +4,7 @@ from mcp.server.fastmcp import FastMCP
 from podman_mcp_server.utils.mcp import mcpWrapper
 from podman_mcp_server.api import system_api, containers_api, images_api, networks_api
 
+
 def main():
     """Run the MCP server."""
     mcp = FastMCP("Podman MCP Server")

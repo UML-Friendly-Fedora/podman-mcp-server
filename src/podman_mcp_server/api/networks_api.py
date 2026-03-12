@@ -10,4 +10,3 @@ class NetworksAPI:
     def podman_list_networks():
         """List Podman networks."""
         return podman_get("/libpod/networks/json")
-    
