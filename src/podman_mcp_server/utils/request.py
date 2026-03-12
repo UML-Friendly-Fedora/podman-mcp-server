@@ -11,11 +11,11 @@ session = requests_unixsocket.Session()
 # package yet.
 
 # Gathering the URI link for appropriate OS
+
 def uri():
-    uri = ""
     system = platform.system()
     if system == "Darwin":
-        uri = f"http+unix://%2FUsers%2F{os.getlogin()}%2F.local%2Fshare%2Fcontainers%2Fpodman%2Fmachine%2Fpodman.sock"
+        uri = f"http+unix://%2FUsers%2F{os.environ.get("USER")}%2F.local%2Fshare%2Fcontainers%2Fpodman%2Fmachine%2Fpodman.sock"
     elif system == "Linux":
         uri = f"http+unix://{os.getenv("XDG_RUNTIME_DIR")}%2Fpodman%2Fpodman.sock"
     elif system == "Windows":
