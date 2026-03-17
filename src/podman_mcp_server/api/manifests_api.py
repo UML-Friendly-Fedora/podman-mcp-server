@@ -12,21 +12,29 @@ class ManifestsAPI:
         List local manifest lists.
 
         Podman does not expose a GET list endpoint for manifests.
-        Get candidates from /libpod/images/json and check if they are manifests by trying to inspect them as manifests.
+        Get candidates from /libpod/images/json and check if they are manifests
+        by trying to inspect them as manifests.
         """
         images = podman_get("/libpod/images/json")
         if not isinstance(images, list):
             return images
 
         manifests = []
+        seen = set()
 
         for img in images:
             names = img.get("Names") or []
-            for n in names:
-                base = n.split("/")[-1].split("@")[0].split(":")[0]
+            for name in names:
+                if name in seen:
+                    continue
+
                 try:
-                    podman_get(f"/libpod/manifests/{base}/json")
-                    manifests.append(img)
+                    manifest = podman_get(f"/libpod/manifests/{name}/json")
+                    manifests.append({
+                        "name": name,
+                        "manifest": manifest,
+                    })
+                    seen.add(name)
                     break
                 except Exception:
                     continue
