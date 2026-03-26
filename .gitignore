@@ -1,3 +1,8 @@
 .vscode/*
 **/__pycache__
 **/.venv
+.claude
+.gemini
+.mcp.json
+.env
+.ruff_cache/
