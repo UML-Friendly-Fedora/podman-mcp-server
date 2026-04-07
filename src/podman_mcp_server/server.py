@@ -25,6 +25,7 @@ def main():
     networks_api.NetworksAPI()
     volumes_api.VolumesAPI()
     pods_api.PodsAPI()
+    manifests_api.ManifestsAPI()
 
     # Initialize the mcpWrapper with the MCP instance
     mcpWrapper(mcp)
