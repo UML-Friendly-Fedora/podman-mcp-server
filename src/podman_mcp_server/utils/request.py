@@ -10,9 +10,20 @@ api_version = "v6.0.0"
 session = requests_unixsocket.Session()
 
 
+# TODO: Implement a unified _handle_response() helper to manage 204 No Content
+# responses across podman_get(), podman_post(), and podman_delete().
+# Currently only podman_get() handles 204. See issue with response.json() on empty bodies.
+
+
 def podman_get(endpoint: str) -> str:
     response = session.get(f"{uri}/{api_version}{endpoint}")
     response.raise_for_status()
+
+    if response.status_code == 204:
+        return "Status code 204: No Content. The request was successful but there is no content to return."
+    if response.status_code == 404:
+        return "Status code 404: Not Found. The requested resource could not be found."
+
     return response.json()
 
 
