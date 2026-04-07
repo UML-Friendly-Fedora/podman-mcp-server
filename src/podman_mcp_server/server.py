@@ -9,6 +9,7 @@ from podman_mcp_server.api import (
     networks_api,
     volumes_api,
     pods_api,
+    manifests_api
 )
 
 
