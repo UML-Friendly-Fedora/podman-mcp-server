@@ -1,0 +1,14 @@
+{
+	"inputs": [],
+	"servers": {
+		"Podman MCP": {
+			"command": "uv",
+				"args": [
+					"--directory",
+					"${workspaceFolder}",
+					"run",
+					"podman-mcp"
+				]
+		}
+	}
+}
