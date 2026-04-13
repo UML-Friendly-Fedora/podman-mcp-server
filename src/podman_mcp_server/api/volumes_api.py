@@ -5,13 +5,13 @@ from podman_mcp_server.utils.request import podman_get
 
 
 class VolumesAPI:
-    @mcpWrapper.tool(description="List Podman volumes.")
+    @mcpWrapper.tool()
     @staticmethod
     def podman_list_volumes():
         """List Podman volumes."""
         return podman_get("/libpod/volumes/json")
 
-    @mcpWrapper.tool(description="Inspect a Podman volume by name.")
+    @mcpWrapper.tool()
     @staticmethod
     def podman_inspect_volume(name: str):
         """Inspect a Podman volume by name."""
